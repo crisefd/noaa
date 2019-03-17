@@ -22,18 +22,20 @@ defmodule Noaa.CLI do
 
   """
   def parse_args(argv) do
-    { parsed, args, _ } = OptionParser
-      .parse(argv,
-             switches: [help: :boolean],
-             aliases: [h: :help])
+    {parsed, args, _} =
+      OptionParser.parse(argv,
+        switches: [help: :boolean],
+        aliases: [h: :help]
+      )
 
     args_to_internal_representation(parsed, args)
   end
 
   def process(:help) do
-    IO.puts """
+    IO.puts("""
       usage: noaa location1 [location2]
-    """
+    """)
+
     System.halt(0)
   end
 
@@ -42,11 +44,11 @@ defmodule Noaa.CLI do
   end
 
   defp print_data(location_data) do
-    location_data |> TableFormatter.print_table(Data.data_columns)
+    location_data |> TableFormatter.print_table(Data.data_columns())
   end
 
   defp decode_response({:error, _}) do
-    IO.puts "Error fetching data"
+    IO.puts("Error fetching data")
     System.halt(2)
   end
 
@@ -54,23 +56,22 @@ defmodule Noaa.CLI do
     body
   end
 
-  defp args_to_internal_representation([help: :true], _) do
+  defp args_to_internal_representation([help: true], _) do
     :help
   end
 
   defp args_to_internal_representation(_, []), do: :help
 
   defp args_to_internal_representation(_, locations) when is_list(locations) do
-   locations
+    locations
   end
 
   defp args_to_internal_representation(_, locations) do
-    IO.inspect locations
+    IO.inspect(locations)
     [locations]
   end
 
   def sort_location_data(location_data) do
     sort(location_data)
   end
-
 end

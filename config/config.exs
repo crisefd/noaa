@@ -29,19 +29,20 @@ use Mix.Config
 #
 #     import_config "#{Mix.env()}.exs"
 
-
 config :noaa, noaa_url: "https://w1.weather.gov/xml/current_obs/"
-config :noaa, noaa_columns: [
-  { "observation_time", "Last Updated" },
-  { "observation_time_rfc822", "" },
-  { "weather", "Weather" },
-  { "temperature_string", "Temperature" },
-  { "dewpoint_string", "Dewpoint" },
-  { "relative_humidity", "Relative Humdity" },
-  { "wind_string", "Wind" },
-  { "visibility_mi", "Visibility" },
-  { "pressure_string", "MSL Pressure" },
-  { "pressure_in", "Altimeter" },
-]
-config :logger, compile_time_purge_level: :info
 
+config :noaa,
+  noaa_columns: [
+    {"observation_time", "Last Updated"},
+    {"observation_time_rfc822", ""},
+    {"weather", "Weather"},
+    {"temperature_string", "Temperature"},
+    {"dewpoint_string", "Dewpoint"},
+    {"relative_humidity", "Relative Humdity"},
+    {"wind_string", "Wind"},
+    {"visibility_mi", "Visibility"},
+    {"pressure_string", "MSL Pressure"},
+    {"pressure_in", "Altimeter"}
+  ]
+
+config :logger, compile_time_purge_level: :info

@@ -22,18 +22,20 @@ defmodule Noaa.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.5.0"}, # http client
-      {:poison, "~> 3.1.0"},    # parser
-      {:ex_doc, "~> 0.19.3"},    # documentation tool
-      {:earmark, "~> 1.3.1"},    # markdown-to-html converter
+      # http client
+      {:httpoison, "~> 1.5.0"},
+      # parser
+      {:poison, "~> 3.1.0"},
+      # documentation tool
+      {:ex_doc, "~> 0.19.3"},
+      # markdown-to-html converter
+      {:earmark, "~> 1.3.1"}
     ]
   end
-
 
   defp escript_config do
     [
       main_module: Noaa.CLI
     ]
   end
-
 end
